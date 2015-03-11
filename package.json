@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "babel-core": "^4.7.1",
+    "babel-loader": "^4.1.0",
+    "firebase": "^2.2.2",
+    "lodash": "^3.5.0",
+    "ramda": "^0.11.0",
+    "react": "^0.12.2",
+    "react-hot-loader": "^1.1.7",
+    "react-router": "^0.12.4",
+    "reflux": "^0.2.6",
+    "webpack": "^1.7.2",
+    "webpack-dev-server": "^1.7.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "build": "webpack --progress --colors"
+  }
+}
