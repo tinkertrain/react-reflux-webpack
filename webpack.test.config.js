@@ -9,33 +9,22 @@ var sassLoaders = [
 ];
 
 module.exports = {
-  devtool: 'eval',
-
   entry: {
-    app: [
-      'webpack-dev-server/client?http://0.0.0.0:3000',
-      'webpack/hot/only-dev-server',
-      './src/index'
-    ]
+    app: ['./src/index'],
+    test: ['./test/index']
   },
 
   output: {
-    filename: '[name].js',
     path: path.join(__dirname, './build'),
-    publicPath: '/build/'
-  },
-
-  resolve: {
-    extensions: ['', '.js', '.jsx', '.scss'],
-    modulesDirectories: ['src', 'node_modules']
+    filename: '[name].js',
   },
 
   module: {
     loaders: [
       {
-        test: /\.js?$/,
-        loaders: ['react-hot', 'babel'],
-        exclude: /node_modules/
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel'
       },
       {
         test: /\.scss$/,
@@ -44,14 +33,23 @@ module.exports = {
           'css-loader',
           'autoprefixer-loader?browsers=last 2 version',
           'sass-loader?includePaths[]=' + path.resolve(__dirname, './src'),
-        ]
+        ],
+        loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
       }
     ]
   },
 
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.scss'],
+    modulesDirectories: ['src', 'node_modules']
+  },
 
-};
+  plugins: [
+    new ExtractTextPlugin('[name].css'),
+    new webpack.optimize.DedupePlugin()
+  ],
+
+  node: {
+    fs: 'empty'
+  }
+}
