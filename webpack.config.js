@@ -9,7 +9,7 @@ var sassLoaders = [
 ];
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'inline-source-map',
 
   entry: {
     app: [
@@ -34,7 +34,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js?$/,
-        loaders: ['react-hot', 'babel'],
+        loaders: ['react-hot', 'babel-loader?experimental&externalHelpers'],
         exclude: /node_modules/
       },
       {

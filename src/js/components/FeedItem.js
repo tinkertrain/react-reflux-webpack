@@ -1,11 +1,7 @@
 import React from 'react';
-import Reflux from 'Reflux';
-import feedActions from '../actions/feedActions';
-import feedStore from '../stores/feedStore';
+import FluxComponent from 'flummox/component';
 
-var FeedItem = React.createClass({
-
-  mixins: [Reflux.connect(feedStore)],
+class FeedItem extends React.Component {
 
   vote(newCount) {
     feedActions.vote({
@@ -45,6 +41,6 @@ var FeedItem = React.createClass({
       </li>
     );
   }
-});
+}
 
 export default FeedItem;

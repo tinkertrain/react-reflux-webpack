@@ -1,10 +1,8 @@
 import React from 'react';
-import Reflux from 'Reflux';
+
 import feedActions from '../actions/feedActions';
-import feedStore from '../stores/feedStore';
-import FeedList from './FeedList';
-import FeedForm from './FeedForm';
-import ShowAddButton from './ShowAddButton';
+
+
 
 var Feed = React.createClass({
 
